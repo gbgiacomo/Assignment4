@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-gcc")
+set(CMAKE_C_COMPILER "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-gcc")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_COMPILER_VERSION "9.2.1")
@@ -21,11 +21,11 @@ set(CMAKE_C_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar")
-set(CMAKE_C_COMPILER_AR "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-gcc-ar")
-set(CMAKE_RANLIB "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib")
-set(CMAKE_C_COMPILER_RANLIB "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-gcc-ranlib")
-set(CMAKE_LINKER "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ld.bfd")
+set(CMAKE_AR "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-ar")
+set(CMAKE_C_COMPILER_AR "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-gcc-ar")
+set(CMAKE_RANLIB "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-ranlib")
+set(CMAKE_C_COMPILER_RANLIB "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-gcc-ranlib")
+set(CMAKE_LINKER "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-ld.bfd")
 set(CMAKE_MT "")
 set(CMAKE_COMPILER_IS_GNUCC 1)
 set(CMAKE_C_COMPILER_LOADED 1)

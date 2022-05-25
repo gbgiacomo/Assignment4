@@ -10,13 +10,13 @@
 #include <zephyr.h>
 #include <device.h>
 #include <drivers/gpio.h>
+#include <drivers/adc.h>
 #include <sys/printk.h>
 #include <sys/__assert.h>
 #include <string.h>
 #include <timing/timing.h>
 #include <stdlib.h>
 #include <stdio.h>
-
 
 /* Size of stack area used by each thread (can be thread specific, if necessary)*/
 #define STACK_SIZE 1024
@@ -60,6 +60,25 @@ void thread_A_code(void *argA, void *argB, void *argC);
 void thread_B_code(void *argA, void *argB, void *argC);
 void thread_C_code(void *argA, void *argB, void *argC);
 
+/*ADC definitions and includes*/
+#include <hal/nrf_saadc.h>
+#define ADC_NID DT_NODELABEL(adc) 
+#define ADC_RESOLUTION 10
+#define ADC_GAIN ADC_GAIN_1_4
+#define ADC_REFERENCE ADC_REF_VDD_1_4
+#define ADC_ACQUISITION_TIME ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 40)
+#define ADC_CHANNEL_ID 1 
+#define ADC_CHANNEL_INPUT NRF_SAADC_INPUT_AIN1
+#define BUFFER_SIZE 1
+
+/* ADC channel configuration */
+static const struct adc_channel_cfg my_channel_cfg = {
+	.gain = ADC_GAIN,
+	.reference = ADC_REFERENCE,
+	.acquisition_time = ADC_ACQUISITION_TIME,
+	.channel_id = ADC_CHANNEL_ID,
+	.input_positive = ADC_CHANNEL_INPUT
+};
 
 /* Main function */
 void main(void) {
