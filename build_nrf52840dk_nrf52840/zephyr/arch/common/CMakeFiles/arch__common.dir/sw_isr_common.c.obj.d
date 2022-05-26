@@ -1,6 +1,6 @@
 zephyr/arch/common/CMakeFiles/arch__common.dir/sw_isr_common.c.obj: \
  /home/mattia/ncs/zephyr/arch/common/sw_isr_common.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/zephyr/include/sw_isr_table.h \
  /home/mattia/ncs/zephyr/include/zephyr/types.h \
@@ -17,8 +17,8 @@ zephyr/arch/common/CMakeFiles/arch__common.dir/sw_isr_common.c.obj: \
  /home/mattia/ncs/zephyr/include/arch/arch_inlines.h \
  /home/mattia/ncs/zephyr/include/arch/arm/aarch32/arch.h \
  /home/mattia/ncs/zephyr/include/devicetree.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
  /home/mattia/ncs/zephyr/include/sys/util.h \
  /home/mattia/ncs/zephyr/include/sys/util_macro.h \
  /home/mattia/ncs/zephyr/include/sys/util_internal.h \

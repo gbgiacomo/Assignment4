@@ -1,6 +1,6 @@
 modules/segger/CMakeFiles/modules__segger.dir/home/mattia/ncs/modules/debug/segger/SEGGER/SEGGER_RTT.c.obj: \
  /home/mattia/ncs/modules/debug/segger/SEGGER/SEGGER_RTT.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/modules/debug/segger/SEGGER/SEGGER_RTT.h \
  /home/mattia/ncs/modules/debug/segger/Config/SEGGER_RTT_Conf.h \

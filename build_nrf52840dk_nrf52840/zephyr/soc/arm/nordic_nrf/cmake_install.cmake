@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/soc/arm/nordic_nrf/nrf52/cmake_install.cmake")
+  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/soc/arm/nordic_nrf/nrf52/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/soc/arm/nordic_nrf/common/cmake_install.cmake")
+  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/soc/arm/nordic_nrf/common/cmake_install.cmake")
 endif()
 

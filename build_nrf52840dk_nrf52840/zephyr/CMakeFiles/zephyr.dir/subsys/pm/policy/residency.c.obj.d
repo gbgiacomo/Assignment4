@@ -1,10 +1,10 @@
 zephyr/CMakeFiles/zephyr.dir/subsys/pm/policy/residency.c.obj: \
  /home/mattia/ncs/zephyr/subsys/pm/policy/residency.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/zephyr/include/devicetree.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
  /home/mattia/ncs/zephyr/include/sys/util.h \
  /home/mattia/ncs/zephyr/include/sys/util_macro.h \
  /home/mattia/ncs/zephyr/include/sys/util_internal.h \
@@ -52,14 +52,14 @@ zephyr/CMakeFiles/zephyr.dir/subsys/pm/policy/residency.c.obj: \
  /home/mattia/ncs/zephyr/include/sys/cbprintf_internal.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/errno.h \
  /home/mattia/ncs/zephyr/include/sys/errno_private.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/errno_private.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/errno_private.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
  /home/mattia/ncs/zephyr/include/syscall.h \
  /home/mattia/ncs/zephyr/include/arch/syscall.h \
  /home/mattia/ncs/zephyr/include/arch/arm/aarch32/syscall.h \
  /home/mattia/ncs/zephyr/include/linker/sections.h \
  /home/mattia/ncs/zephyr/include/linker/section_tags.h \
  /home/mattia/ncs/zephyr/include/sys/cbprintf_cxx.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/log_msg2.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/log_msg2.h \
  /home/mattia/ncs/zephyr/include/tracing/tracing_syscall.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/log_core.h
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/log_core.h

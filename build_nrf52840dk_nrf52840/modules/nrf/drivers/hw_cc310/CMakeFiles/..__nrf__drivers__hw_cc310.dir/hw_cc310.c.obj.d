@@ -1,6 +1,6 @@
 modules/nrf/drivers/hw_cc310/CMakeFiles/..__nrf__drivers__hw_cc310.dir/hw_cc310.c.obj: \
  /home/mattia/ncs/nrf/drivers/hw_cc310/hw_cc310.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/zephyr/include/init.h \
  /home/mattia/ncs/zephyr/include/toolchain.h \
@@ -37,7 +37,7 @@ modules/nrf/drivers/hw_cc310/CMakeFiles/..__nrf__drivers__hw_cc310.dir/hw_cc310.
  /home/mattia/ncs/zephyr/include/kernel/mempool_heap.h \
  /home/mattia/ncs/zephyr/include/kernel_version.h \
  /home/mattia/ncs/zephyr/include/syscall.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
  /home/mattia/ncs/zephyr/include/arch/syscall.h \
  /home/mattia/ncs/zephyr/include/arch/arm/aarch32/syscall.h \
  /home/mattia/ncs/zephyr/include/arch/cpu.h \
@@ -47,8 +47,8 @@ modules/nrf/drivers/hw_cc310/CMakeFiles/..__nrf__drivers__hw_cc310.dir/hw_cc310.
  /home/mattia/ncs/zephyr/include/arch/arch_inlines.h \
  /home/mattia/ncs/zephyr/include/arch/arm/aarch32/arch.h \
  /home/mattia/ncs/zephyr/include/devicetree.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
  /home/mattia/ncs/zephyr/include/devicetree/io-channels.h \
  /home/mattia/ncs/zephyr/include/devicetree/clocks.h \
  /home/mattia/ncs/zephyr/include/devicetree/gpio.h \
@@ -111,16 +111,16 @@ modules/nrf/drivers/hw_cc310/CMakeFiles/..__nrf__drivers__hw_cc310.dir/hw_cc310.
  /home/mattia/ncs/zephyr/include/app_memory/mem_domain.h \
  /home/mattia/ncs/zephyr/include/kernel/thread.h \
  /home/mattia/ncs/zephyr/include/sys/kobject.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/kobj-types-enum.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/kobject.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/kobj-types-enum.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/kobject.h \
  /home/mattia/ncs/zephyr/include/tracing/tracing_syscall.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/errno.h \
  /home/mattia/ncs/zephyr/include/sys/errno_private.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/errno_private.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/errno_private.h \
  /home/mattia/ncs/zephyr/include/tracing/tracing_macros.h \
  /home/mattia/ncs/zephyr/include/tracing/tracing.h \
  /home/mattia/ncs/zephyr/include/tracing/tracking.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/kernel.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/kernel.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/stdio.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/stdlib.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/string.h \
@@ -128,9 +128,9 @@ modules/nrf/drivers/hw_cc310/CMakeFiles/..__nrf__drivers__hw_cc310.dir/hw_cc310.
  /home/mattia/ncs/zephyr/include/device.h \
  /home/mattia/ncs/zephyr/include/sys/device_mmio.h \
  /home/mattia/ncs/zephyr/include/sys/mem_manage.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/mem_manage.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/device_extern.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/device.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/mem_manage.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/device_extern.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/device.h \
  /home/mattia/ncs/nrfxlib/crypto/nrf_cc310_platform/include/nrf_cc3xx_platform.h \
  /home/mattia/ncs/nrfxlib/crypto/nrf_cc310_platform/include/nrf_cc3xx_platform_defines.h \
  /home/mattia/ncs/nrfxlib/crypto/nrf_cc310_platform/include/nrf_cc3xx_platform_abort.h \

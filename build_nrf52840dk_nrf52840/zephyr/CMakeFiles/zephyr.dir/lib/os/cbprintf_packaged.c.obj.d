@@ -1,6 +1,6 @@
 zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj: \
  /home/mattia/ncs/zephyr/lib/os/cbprintf_packaged.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/errno.h \
  /home/mattia/ncs/zephyr/include/sys/errno_private.h \
@@ -8,8 +8,8 @@ zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj: \
  /home/mattia/ncs/zephyr/include/toolchain/gcc.h \
  /home/mattia/ncs/zephyr/include/toolchain/common.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/stdbool.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/errno_private.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/errno_private.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/stdint.h \
  /home/mattia/ncs/zephyr/include/syscall.h \
  /home/mattia/ncs/zephyr/include/arch/syscall.h \

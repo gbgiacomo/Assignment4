@@ -1,6 +1,6 @@
 zephyr/CMakeFiles/zephyr.dir/lib/os/crc8_sw.c.obj: \
  /home/mattia/ncs/zephyr/lib/os/crc8_sw.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/zephyr/include/sys/crc.h \
  /home/mattia/ncs/zephyr/include/zephyr/types.h \

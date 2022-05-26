@@ -1,6 +1,6 @@
 zephyr/soc/arm/nordic_nrf/nrf52/CMakeFiles/soc__arm__nordic_nrf__nrf52.dir/power.c.obj: \
  /home/mattia/ncs/zephyr/soc/arm/nordic_nrf/nrf52/power.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/zephyr/include/zephyr.h \
  /home/mattia/ncs/zephyr/include/kernel.h \
@@ -37,7 +37,7 @@ zephyr/soc/arm/nordic_nrf/nrf52/CMakeFiles/soc__arm__nordic_nrf__nrf52.dir/power
  /home/mattia/ncs/zephyr/include/kernel/mempool_heap.h \
  /home/mattia/ncs/zephyr/include/kernel_version.h \
  /home/mattia/ncs/zephyr/include/syscall.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
  /home/mattia/ncs/zephyr/include/arch/syscall.h \
  /home/mattia/ncs/zephyr/include/arch/arm/aarch32/syscall.h \
  /home/mattia/ncs/zephyr/include/arch/cpu.h \
@@ -47,8 +47,8 @@ zephyr/soc/arm/nordic_nrf/nrf52/CMakeFiles/soc__arm__nordic_nrf__nrf52.dir/power
  /home/mattia/ncs/zephyr/include/arch/arch_inlines.h \
  /home/mattia/ncs/zephyr/include/arch/arm/aarch32/arch.h \
  /home/mattia/ncs/zephyr/include/devicetree.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
  /home/mattia/ncs/zephyr/include/devicetree/io-channels.h \
  /home/mattia/ncs/zephyr/include/devicetree/clocks.h \
  /home/mattia/ncs/zephyr/include/devicetree/gpio.h \
@@ -111,16 +111,16 @@ zephyr/soc/arm/nordic_nrf/nrf52/CMakeFiles/soc__arm__nordic_nrf__nrf52.dir/power
  /home/mattia/ncs/zephyr/include/app_memory/mem_domain.h \
  /home/mattia/ncs/zephyr/include/kernel/thread.h \
  /home/mattia/ncs/zephyr/include/sys/kobject.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/kobj-types-enum.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/kobject.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/kobj-types-enum.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/kobject.h \
  /home/mattia/ncs/zephyr/include/tracing/tracing_syscall.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/errno.h \
  /home/mattia/ncs/zephyr/include/sys/errno_private.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/errno_private.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/errno_private.h \
  /home/mattia/ncs/zephyr/include/tracing/tracing_macros.h \
  /home/mattia/ncs/zephyr/include/tracing/tracing.h \
  /home/mattia/ncs/zephyr/include/tracing/tracking.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/kernel.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/kernel.h \
  /home/mattia/ncs/zephyr/include/pm/pm.h \
  /home/mattia/ncs/zephyr/include/pm/state.h \
  /home/mattia/ncs/modules/hal/nordic/nrfx/hal/nrf_power.h \
@@ -140,5 +140,5 @@ zephyr/soc/arm/nordic_nrf/nrf52/CMakeFiles/soc__arm__nordic_nrf__nrf52.dir/power
  /home/mattia/ncs/zephyr/include/sys/cbprintf.h \
  /home/mattia/ncs/zephyr/include/sys/cbprintf_internal.h \
  /home/mattia/ncs/zephyr/include/sys/cbprintf_cxx.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/log_msg2.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/log_core.h
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/log_msg2.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/log_core.h

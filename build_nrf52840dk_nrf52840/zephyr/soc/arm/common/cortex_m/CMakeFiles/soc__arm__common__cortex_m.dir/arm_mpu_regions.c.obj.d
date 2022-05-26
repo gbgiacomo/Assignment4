@@ -1,6 +1,6 @@
 zephyr/soc/arm/common/cortex_m/CMakeFiles/soc__arm__common__cortex_m.dir/arm_mpu_regions.c.obj: \
  /home/mattia/ncs/zephyr/soc/arm/common/cortex_m/arm_mpu_regions.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/zephyr/include/sys/slist.h \
  /home/mattia/gnuarmemb/9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
@@ -53,8 +53,8 @@ zephyr/soc/arm/common/cortex_m/CMakeFiles/soc__arm__common__cortex_m.dir/arm_mpu
  /home/mattia/ncs/zephyr/include/arch/arch_inlines.h \
  /home/mattia/ncs/zephyr/include/arch/arm/aarch32/arch.h \
  /home/mattia/ncs/zephyr/include/devicetree.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
  /home/mattia/ncs/zephyr/include/devicetree/io-channels.h \
  /home/mattia/ncs/zephyr/include/devicetree/clocks.h \
  /home/mattia/ncs/zephyr/include/devicetree/gpio.h \

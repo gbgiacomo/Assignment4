@@ -1,6 +1,6 @@
-/home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/Kconfig/Kconfig.modules
-/home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/Kconfig/Kconfig.shield
-/home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/Kconfig/Kconfig.shield.defconfig
+/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/Kconfig/Kconfig.modules
+/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/Kconfig/Kconfig.shield
+/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/Kconfig/Kconfig.shield.defconfig
 /home/mattia/ncs/modules/debug/TraceRecorder/kernelports/Zephyr/Kconfig
 /home/mattia/ncs/modules/debug/TraceRecorder/kernelports/Zephyr/streamports/ARM_ITM/Kconfig
 /home/mattia/ncs/modules/debug/TraceRecorder/kernelports/Zephyr/streamports/Jlink_RTT/Kconfig

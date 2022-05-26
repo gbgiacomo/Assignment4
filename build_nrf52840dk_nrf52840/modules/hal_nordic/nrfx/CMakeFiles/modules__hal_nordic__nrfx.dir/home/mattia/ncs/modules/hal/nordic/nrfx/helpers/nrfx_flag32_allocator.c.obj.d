@@ -1,6 +1,6 @@
 modules/hal_nordic/nrfx/CMakeFiles/modules__hal_nordic__nrfx.dir/home/mattia/ncs/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c.obj: \
  /home/mattia/ncs/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.h \
  /home/mattia/ncs/modules/hal/nordic/nrfx/nrfx.h \
@@ -46,8 +46,8 @@ modules/hal_nordic/nrfx/CMakeFiles/modules__hal_nordic__nrfx.dir/home/mattia/ncs
  /home/mattia/ncs/zephyr/include/arch/arch_inlines.h \
  /home/mattia/ncs/zephyr/include/arch/arm/aarch32/arch.h \
  /home/mattia/ncs/zephyr/include/devicetree.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_unfixed.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/devicetree_fixups.h \
  /home/mattia/ncs/zephyr/include/sys/util.h \
  /home/mattia/ncs/zephyr/include/devicetree/io-channels.h \
  /home/mattia/ncs/zephyr/include/devicetree/clocks.h \

@@ -11,21 +11,14 @@
 #include <device.h>
 #include <devicetree.h>
 #include <drivers/gpio.h>
-<<<<<<< HEAD
 #include <drivers/adc.h>
-=======
 #include <drivers/pwm.h>
->>>>>>> PWMImplementation
 #include <sys/printk.h>
 #include <sys/__assert.h>
 #include <string.h>
 #include <timing/timing.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-<<<<<<< HEAD
-=======
-
 
 /* PWM pin initialization */
 #define PWM0_NID DT_NODELABEL(pwm0) 
@@ -40,8 +33,6 @@
                 /*         you to read the dts file.                                                       */
                 /*         This line would do the trick: #define BOARDLED_PIN DT_PROP(PWM0_NID, ch0_pin)   */          
 
-
->>>>>>> PWMImplementation
 /* Size of stack area used by each thread (can be thread specific, if necessary)*/
 #define STACK_SIZE 1024
 
@@ -105,10 +96,51 @@ static const struct adc_channel_cfg my_channel_cfg = {
 	.channel_id = ADC_CHANNEL_ID,
 	.input_positive = ADC_CHANNEL_INPUT
 };
+struct k_timer my_timer;
+const struct device *adc_dev = NULL;
+static uint16_t adc_sample_buffer[BUFFER_SIZE];
+static uint16_t sample;
+
+/* Takes one sample */
+static int adc_sample(void)
+{
+	int ret;
+	const struct adc_sequence sequence = {
+		.channels = BIT(ADC_CHANNEL_ID),
+		.buffer = adc_sample_buffer,
+		.buffer_size = sizeof(adc_sample_buffer),
+		.resolution = ADC_RESOLUTION,
+	};
+
+	if (adc_dev == NULL) {
+            printk("adc_sample(): error, must bind to adc first \n\r");
+            return -1;
+	}
+
+	ret = adc_read(adc_dev, &sequence);
+	if (ret) {
+            printk("adc_read() failed with code %d\n", ret);
+	}	
+
+	return ret;
+}
 
 /* Main function */
 void main(void) {
     
+    int err=0;
+
+    /* ADC setup: bind and initialize */
+    adc_dev = device_get_binding(DT_LABEL(ADC_NID));
+	if (!adc_dev) {
+        printk("ADC device_get_binding() failed\n");
+    } 
+    err = adc_channel_setup(adc_dev, &my_channel_cfg);
+    if (err) {
+        printk("adc_channel_setup() failed with error code %d\n", err);
+    }
+
+
     /* Create and init semaphores */
     k_sem_init(&sem_ab, 0, 1);
     k_sem_init(&sem_bc, 0, 1);
@@ -128,7 +160,6 @@ void main(void) {
 
     
     return;
-
 } 
 
 /* Thread code implementation */
@@ -146,22 +177,31 @@ void thread_A_code(void *argA , void *argB, void *argC)
     release_time = k_uptime_get() + thread_A_period;
 
     /* Thread loop */
+    /* Thread loop */
     while(1) {
-        
-        /*
-         * 1- Read data input from ADC
-         * 2- Insert samples in the vector
-         *
-         */
-        
-        /*Briefly semaphores test*/
-        if(nact<100-step)
-          nact+=step;
-        else
-          nact=-step;
 
-        printk("\n\nTask A %ld at time: %lld ms", nact ,k_uptime_get());
-        ab=nact;
+        printk("\n\nTask A at time: %lld ms" ,k_uptime_get());
+        /*****************************************/
+        /******** Read data input from ADC *******/
+        /*****************************************/
+
+        int err=0;
+        /* Get one sample, checks for errors and prints the values */
+        err=adc_sample();
+        if(err) {
+            printk("adc_sample() failed with error code %d\n\r",err);
+        }
+        else {
+            if(adc_sample_buffer[0] > 1023) {
+                printk("adc reading out of range\n\r");
+            }
+            else {
+                sample=adc_sample_buffer[0];
+                printk(": sample is : %4u",sample);
+            }
+        }
+
+        /*semaphore*/
         k_sem_give(&sem_ab);
 
 
@@ -170,10 +210,8 @@ void thread_A_code(void *argA , void *argB, void *argC)
         if( fin_time < release_time) {
             k_msleep(release_time - fin_time);
             release_time += thread_A_period;
-
         }
-         
-    }
+    } 
 
 }
 
@@ -183,6 +221,9 @@ void thread_B_code(void *argA , void *argB, void *argC)
     long int nact = 0;
 
     while(1) {
+
+        printk("\nTask B at time: %lld ms",k_uptime_get());
+
         k_sem_take(&sem_ab,  K_FOREVER);
 
         /*
@@ -192,11 +233,7 @@ void thread_B_code(void *argA , void *argB, void *argC)
          *
          */
         
-        /*Briefly semaphores test*/
-        nact=ab;
-        nact+=step;
-        printk("\nTask B read %ld and write %ld at time: %lld ms",ab ,nact ,k_uptime_get());
-        bc=nact;
+        /*semaphore*/
         k_sem_give(&sem_bc);
 
   }
@@ -204,9 +241,6 @@ void thread_B_code(void *argA , void *argB, void *argC)
 
 void thread_C_code(void *argA , void *argB, void *argC)
 {
-    /* Other variables */
-    long int nact = 0;
-
     /* Variables to PWM */
     const struct device *pwm0_dev;          /* Pointer to PWM device structure */
     unsigned int pwmPeriod_us = 1000;       /* PWM priod in us */
@@ -224,6 +258,8 @@ void thread_C_code(void *argA , void *argB, void *argC)
 
 
     while(1) {
+
+        printk("\nTask C at time: %lld ms",k_uptime_get());
         k_sem_take(&sem_bc, K_FOREVER);
 
         /*
@@ -233,7 +269,7 @@ void thread_C_code(void *argA , void *argB, void *argC)
          */
 
          /*Briefly semaphores test*/
-         printk("\nTask C read %ld at time: %lld ms", bc ,k_uptime_get());
+         
 
          ret = pwm_pin_set_usec(pwm0_dev, BOARDLED_PIN,
 		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*bc)/100), PWM_POLARITY_NORMAL);

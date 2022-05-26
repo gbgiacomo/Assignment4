@@ -1,6 +1,6 @@
 zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdout/stdout_console.c.obj: \
  /home/mattia/ncs/zephyr/lib/libc/minimal/source/stdout/stdout_console.c \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/autoconf.h \
  /home/mattia/ncs/zephyr/include/toolchain/zephyr_stdint.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/stdio.h \
  /home/mattia/ncs/zephyr/include/toolchain.h \
@@ -10,9 +10,9 @@ zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdout/stdout_c
  /home/mattia/gnuarmemb/9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
  /home/mattia/gnuarmemb/9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
  /home/mattia/ncs/zephyr/include/sys/libc-hooks.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/libc-hooks.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/libc-hooks.h \
  /home/mattia/ncs/zephyr/include/tracing/tracing_syscall.h \
- /home/mattia/Scrivania/assign4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
+ /home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscall_list.h \
  /home/mattia/ncs/zephyr/lib/libc/minimal/include/stdint.h \
  /home/mattia/ncs/zephyr/include/syscall.h \
  /home/mattia/ncs/zephyr/include/arch/syscall.h \
