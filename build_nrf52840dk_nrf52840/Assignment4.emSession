@@ -42,7 +42,11 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
+<<<<<<< HEAD
   <SessionOpenFile windowGroup="DockEditLeft" x="2" y="80" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../src/main.c" selected="1" top="63" codecName="Default"/>
+=======
+  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="38" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../src/main.c" selected="1" top="0" codecName="Default"/>
+>>>>>>> PWMImplementation
  </Files>
  <ARMCrossStudioWindow activeProject="zephyr/zephyr.elf(build)" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Common" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/mattia/Scrivania" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
