@@ -1,4 +1,4 @@
-# Install script for directory: /home/mattia/ncs/nrf/modules/mcuboot
+# Install script for directory: /home/giacomo/ncs/nrf/modules/mcuboot
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,11 +34,11 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-objdump")
+  set(CMAKE_OBJDUMP "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/modules/mcuboot/boot/bootutil/zephyr/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/modules/mcuboot/boot/bootutil/zephyr/cmake_install.cmake")
 endif()
 

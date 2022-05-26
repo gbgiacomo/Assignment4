@@ -62,12 +62,6 @@ k_tid_t thread_A_tid;
 k_tid_t thread_B_tid;
 k_tid_t thread_C_tid;
 
-/* Global variables (shared memory between tasks A/B and B/C) */
-int32_t samples[];
-int32_t filtered_samples[];
-int ab = 0;
-int bc = 0;
-
 /* Semaphores for task synch */
 struct k_sem sem_ab;
 struct k_sem sem_bc;
@@ -87,6 +81,7 @@ void thread_C_code(void *argA, void *argB, void *argC);
 #define ADC_CHANNEL_ID 1 
 #define ADC_CHANNEL_INPUT NRF_SAADC_INPUT_AIN1
 #define BUFFER_SIZE 1
+#define SIZE 10 /* Size of the vector in thread B*/
 
 /* ADC channel configuration */
 static const struct adc_channel_cfg my_channel_cfg = {
@@ -217,8 +212,11 @@ void thread_A_code(void *argA , void *argB, void *argC)
 
 void thread_B_code(void *argA , void *argB, void *argC)
 {
-    /* Other variables */
-    long int nact = 0;
+    int32_t samples[SIZE];
+    int8_t index=-1; /* From 1 to 10*/
+    int32_t average=0;
+    int32_t upperLevel=0;
+    int32_t lowLevel=0;
 
     while(1) {
 
@@ -233,8 +231,38 @@ void thread_B_code(void *argA , void *argB, void *argC)
          *
          */
         
-        /*semaphore*/
-        k_sem_give(&sem_bc);
+         if(index<SIZE-1)
+		index++;
+         else
+		index=0;
+	
+	 samples[index]=sample;
+	
+	 /* Average calculation */
+	 int32_t sum=0;
+	
+	 for(int8_t i=0;i<10;i++){
+		 sum+=samples[i];
+	 }
+	 average=sum/10;
+	
+	 /* Samples value limits */
+	 upperLevel=average*1.1;
+	 lowLevel=average*0.9;
+
+         /* Print values */
+         printk("\n\nVector: \t");
+         for(int8_t l=0;l<10;l++){
+            printk(" %d \t", samples[l]);
+         }
+
+         printk("\n\nAverage: %d",average);
+         printk("\nLow level: %d",lowLevel);
+         printk("\nUpper level: %d",upperLevel);
+
+
+         /*semaphore*/
+         k_sem_give(&sem_bc);
 
   }
 }
@@ -270,9 +298,10 @@ void thread_C_code(void *argA , void *argB, void *argC)
 
          /*Briefly semaphores test*/
          
+         int8_t dutyCycle=10; /* % */
 
          ret = pwm_pin_set_usec(pwm0_dev, BOARDLED_PIN,
-		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*bc)/100), PWM_POLARITY_NORMAL);
+		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*dutyCycle)/100), PWM_POLARITY_NORMAL);
          if (ret) {
           printk("Error %d: failed to set pulse width\n", ret);
             return;

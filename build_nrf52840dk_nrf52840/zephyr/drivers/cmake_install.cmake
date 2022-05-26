@@ -1,4 +1,4 @@
-# Install script for directory: /home/mattia/ncs/zephyr/drivers
+# Install script for directory: /home/giacomo/ncs/zephyr/drivers
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,66 +34,66 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-objdump")
+  set(CMAKE_OBJDUMP "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/interrupt_controller/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/interrupt_controller/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/misc/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/misc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/pcie/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/pcie/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/disk/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/disk/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/usb/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/usb/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/adc/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/adc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/clock_control/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/clock_control/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/console/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/console/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/gpio/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/gpio/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/pwm/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/pwm/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/serial/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/serial/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mattia/Scrivania/assign4_2/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/timer/cmake_install.cmake")
+  include("/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/drivers/timer/cmake_install.cmake")
 endif()
 
