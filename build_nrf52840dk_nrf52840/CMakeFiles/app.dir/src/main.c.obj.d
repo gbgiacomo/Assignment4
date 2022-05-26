@@ -131,6 +131,11 @@ CMakeFiles/app.dir/src/main.c.obj: \
  /home/giacomo/ncs/zephyr/include/drivers/gpio.h \
  /home/giacomo/ncs/zephyr/include/dt-bindings/gpio/gpio.h \
  /home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/gpio.h \
+ /home/giacomo/ncs/zephyr/include/drivers/pwm.h \
+ /home/giacomo/ncs/zephyr/include/sys/math_extras.h \
+ /home/giacomo/ncs/zephyr/include/sys/math_extras_impl.h \
+ /home/giacomo/ncs/zephyr/include/dt-bindings/pwm/pwm.h \
+ /home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840/zephyr/include/generated/syscalls/pwm.h \
  /home/giacomo/ncs/zephyr/lib/libc/minimal/include/string.h \
  /home/giacomo/ncs/zephyr/include/timing/timing.h \
  /home/giacomo/ncs/zephyr/lib/libc/minimal/include/stdlib.h \
