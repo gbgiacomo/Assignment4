@@ -16,6 +16,7 @@
   <ProjectSessionItem path="Assignment4;build;all"/>
   <ProjectSessionItem path="Assignment4;build;app/libapp.a"/>
   <ProjectSessionItem path="Assignment4;build;app/libapp.a;C_COMPILER__app_"/>
+  <ProjectSessionItem path="Assignment4;build;zephyr/zephyr.elf"/>
  </Project>
  <Register1/>
  <Register2/>
@@ -40,7 +41,7 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="24" y="249" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../src/main.c" selected="1" top="245" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="55" y="334" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../src/main.c" selected="1" top="314" codecName="Default"/>
  </Files>
  <ARMCrossStudioWindow activeProject="zephyr/zephyr.elf(build)" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Common" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

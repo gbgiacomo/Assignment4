@@ -25,7 +25,7 @@ rule C_COMPILER__app_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__app_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -62,7 +62,7 @@ rule C_COMPILER__zephyr_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__zephyr_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -148,7 +148,7 @@ rule C_COMPILER__arch__common_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__arch__common_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -167,7 +167,7 @@ rule C_COMPILER__isr_tables_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__isr_tables_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -196,7 +196,7 @@ rule C_COMPILER__arch__arm__core__aarch32_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__arch__arm__core__aarch32_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -225,7 +225,7 @@ rule C_COMPILER__arch__arm__core__aarch32__cortex_m_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__arch__arm__core__aarch32__cortex_m_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -244,7 +244,7 @@ rule C_COMPILER__arch__arm__core__aarch32__mpu_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__arch__arm__core__aarch32__mpu_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -263,7 +263,7 @@ rule C_COMPILER__lib__libc__minimal_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__lib__libc__minimal_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -282,7 +282,7 @@ rule C_COMPILER__lib__posix_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__lib__posix_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -301,7 +301,7 @@ rule C_COMPILER__soc__arm__common__cortex_m_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__soc__arm__common__cortex_m_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -320,7 +320,7 @@ rule C_COMPILER__soc__arm__nordic_nrf__nrf52_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__soc__arm__nordic_nrf__nrf52_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -339,7 +339,7 @@ rule C_COMPILER__subsys__timing_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__subsys__timing_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -358,7 +358,7 @@ rule C_COMPILER__drivers__interrupt_controller_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__drivers__interrupt_controller_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -377,7 +377,7 @@ rule C_COMPILER__drivers__adc_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__drivers__adc_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -396,7 +396,7 @@ rule C_COMPILER__drivers__clock_control_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__drivers__clock_control_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -415,7 +415,7 @@ rule C_COMPILER__drivers__console_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__drivers__console_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -434,7 +434,7 @@ rule C_COMPILER__drivers__gpio_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__drivers__gpio_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -453,7 +453,7 @@ rule C_COMPILER__drivers__pwm_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__drivers__pwm_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -472,7 +472,7 @@ rule C_COMPILER__drivers__serial_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__drivers__serial_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -491,7 +491,7 @@ rule C_COMPILER__drivers__timer_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__drivers__timer_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -510,7 +510,7 @@ rule C_COMPILER__.2e.2e__nrf__lib__fatal_error_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__lib__fatal_error_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -529,7 +529,7 @@ rule C_COMPILER__.2e.2e__nrf__drivers__hw_cc310_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__drivers__hw_cc310_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -548,7 +548,7 @@ rule C_COMPILER__modules__hal_nordic__nrfx_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__modules__hal_nordic__nrfx_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -567,7 +567,7 @@ rule C_COMPILER__modules__segger_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__modules__segger_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -586,7 +586,7 @@ rule C_COMPILER__kernel_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__kernel_
-  command = $PRE_LINK && ccache /snap/cmake/1082/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && ccache /snap/cmake/1088/bin/cmake -E rm -f $TARGET_FILE && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -595,7 +595,7 @@ rule C_STATIC_LIBRARY_LINKER__kernel_
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /snap/cmake/1082/bin/cmake --regenerate-during-build -S/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4 -B/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840
+  command = /snap/cmake/1088/bin/cmake --regenerate-during-build -S/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4 -B/home/giacomo/Desktop/SETR_lab/Assignment_4/Assignment4/build_nrf52840dk_nrf52840
   description = Re-running CMake...
   generator = 1
 
@@ -604,7 +604,7 @@ rule RERUN_CMAKE
 # Rule for cleaning additional files.
 
 rule CLEAN_ADDITIONAL
-  command = /snap/cmake/1082/bin/cmake -DCONFIG=$CONFIG -P CMakeFiles/clean_additional.cmake
+  command = /snap/cmake/1088/bin/cmake -DCONFIG=$CONFIG -P CMakeFiles/clean_additional.cmake
   description = Cleaning additional files...
 
 

@@ -44,9 +44,6 @@
 /* First therad periodicity (in ms)*/
 #define thread_A_period 1000
 
-/* PWM step */
-#define step 25
-
 /* Create thread stack space */
 K_THREAD_STACK_DEFINE(thread_A_stack, STACK_SIZE);
 K_THREAD_STACK_DEFINE(thread_B_stack, STACK_SIZE);
@@ -95,6 +92,7 @@ struct k_timer my_timer;
 const struct device *adc_dev = NULL;
 static uint16_t adc_sample_buffer[BUFFER_SIZE];
 static uint16_t sample;
+static uint16_t output;
 
 /* Takes one sample */
 static int adc_sample(void)
@@ -212,11 +210,12 @@ void thread_A_code(void *argA , void *argB, void *argC)
 
 void thread_B_code(void *argA , void *argB, void *argC)
 {
-    int32_t samples[SIZE];
+    uint16_t samples[SIZE]={0,0,0,0,0,0,0,0,0,0};
+    uint16_t filteredSamples[SIZE]={0,0,0,0,0,0,0,0,0,0};
     int8_t index=-1; /* From 1 to 10*/
-    int32_t average=0;
-    int32_t upperLevel=0;
-    int32_t lowLevel=0;
+    uint16_t average=0;
+    uint16_t upperLevel=0;
+    uint16_t lowerLevel=0;
 
     while(1) {
 
@@ -231,11 +230,13 @@ void thread_B_code(void *argA , void *argB, void *argC)
          *
          */
         
-         if(index<SIZE-1)
+         if(index<SIZE-1){
 		index++;
-         else
+         }
+         else{
 		index=0;
-	
+	 }
+
 	 samples[index]=sample;
 	
 	 /* Average calculation */
@@ -248,18 +249,46 @@ void thread_B_code(void *argA , void *argB, void *argC)
 	
 	 /* Samples value limits */
 	 upperLevel=average*1.1;
-	 lowLevel=average*0.9;
+	 lowerLevel=average*0.9;
 
          /* Print values */
          printk("\n\nVector: \t");
-         for(int8_t l=0;l<10;l++){
+         for(uint8_t l=0;l<10;l++){
             printk(" %d \t", samples[l]);
          }
 
          printk("\n\nAverage: %d",average);
-         printk("\nLow level: %d",lowLevel);
+         printk("\nLower level: %d",lowerLevel);
          printk("\nUpper level: %d",upperLevel);
 
+
+         uint16_t j=0;
+	
+	 for(uint8_t i=0;i<10;i++){
+		 if(samples[i]>=lowerLevel && samples[i]<=upperLevel){
+		 	filteredSamples[j]=samples[i];
+		 	j++;
+		 }
+	 }
+          
+
+         printk("\n\nFiltered vector (index=%d): \t",j);
+         for(uint8_t l=0;l<10;l++){
+            printk(" %d \t", filteredSamples[l]);
+         }
+
+	 uint16_t sum2=0;
+	
+	 for(uint16_t a=0;a<j;a++){
+	 	sum2+=filteredSamples[a];
+	 }
+          
+         if(j>0){
+            output=sum2/j;
+         }
+
+
+         printk("\nOutput value: %d",output);
 
          /*semaphore*/
          k_sem_give(&sem_bc);
@@ -273,6 +302,7 @@ void thread_C_code(void *argA , void *argB, void *argC)
     const struct device *pwm0_dev;          /* Pointer to PWM device structure */
     unsigned int pwmPeriod_us = 1000;       /* PWM priod in us */
     int ret=0;                              /* Generic return value variable */
+    int dutyCycle=0;                    /* % */
 
 
     /* Return pointer to device structure with the given name */
@@ -298,10 +328,11 @@ void thread_C_code(void *argA , void *argB, void *argC)
 
          /*Briefly semaphores test*/
          
-         int8_t dutyCycle=10; /* % */
+        // dutyCycle=(int)((output/1023)*100); /* % */
+         printk("\nDuty cycle: %d\n", dutyCycle);
 
          ret = pwm_pin_set_usec(pwm0_dev, BOARDLED_PIN,
-		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*dutyCycle)/100), PWM_POLARITY_NORMAL);
+		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*output)/1023), PWM_POLARITY_NORMAL);
          if (ret) {
           printk("Error %d: failed to set pulse width\n", ret);
             return;
