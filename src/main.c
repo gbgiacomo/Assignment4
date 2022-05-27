@@ -42,7 +42,7 @@
 #define thread_C_prio 1
 
 /* First therad periodicity (in ms)*/
-#define thread_A_period 1000
+#define thread_A_period 10
 
 /* Create thread stack space */
 K_THREAD_STACK_DEFINE(thread_A_stack, STACK_SIZE);
@@ -187,6 +187,7 @@ void thread_A_code(void *argA , void *argB, void *argC)
         else {
             if(adc_sample_buffer[0] > 1023) {
                 printk("adc reading out of range\n\r");
+                sample=0;  /* Safety value */
             }
             else {
                 sample=adc_sample_buffer[0];
@@ -219,14 +220,14 @@ void thread_B_code(void *argA , void *argB, void *argC)
 
     while(1) {
 
-        printk("\nTask B at time: %lld ms",k_uptime_get());
-
         k_sem_take(&sem_ab,  K_FOREVER);
 
+        printk("\nTask B at time: %lld ms",k_uptime_get());
+
         /*
-         * 1- Read samples from the vector
+         * 1- Read sample value from the semaphore A-B shared memory
          * 2- Filtering the samples
-         * 3- Write the righ samples in a new vector
+         * 3- Provide the right value that drive PWM led
          *
          */
         
@@ -251,17 +252,6 @@ void thread_B_code(void *argA , void *argB, void *argC)
 	 upperLevel=average*1.1;
 	 lowerLevel=average*0.9;
 
-         /* Print values */
-         printk("\n\nVector: \t");
-         for(uint8_t l=0;l<10;l++){
-            printk(" %d \t", samples[l]);
-         }
-
-         printk("\n\nAverage: %d",average);
-         printk("\nLower level: %d",lowerLevel);
-         printk("\nUpper level: %d",upperLevel);
-
-
          uint16_t j=0;
 	
 	 for(uint8_t i=0;i<10;i++){
@@ -270,12 +260,7 @@ void thread_B_code(void *argA , void *argB, void *argC)
 		 	j++;
 		 }
 	 }
-          
-
-         printk("\n\nFiltered vector (index=%d): \t",j);
-         for(uint8_t l=0;l<10;l++){
-            printk(" %d \t", filteredSamples[l]);
-         }
+         
 
 	 uint16_t sum2=0;
 	
@@ -286,9 +271,6 @@ void thread_B_code(void *argA , void *argB, void *argC)
          if(j>0){
             output=sum2/j;
          }
-
-
-         printk("\nOutput value: %d",output);
 
          /*semaphore*/
          k_sem_give(&sem_bc);
@@ -302,8 +284,6 @@ void thread_C_code(void *argA , void *argB, void *argC)
     const struct device *pwm0_dev;          /* Pointer to PWM device structure */
     unsigned int pwmPeriod_us = 1000;       /* PWM priod in us */
     int ret=0;                              /* Generic return value variable */
-    int dutyCycle=0;                    /* % */
-
 
     /* Return pointer to device structure with the given name */
     pwm0_dev = device_get_binding(DT_LABEL(PWM0_NID));
@@ -317,19 +297,15 @@ void thread_C_code(void *argA , void *argB, void *argC)
 
     while(1) {
 
-        printk("\nTask C at time: %lld ms",k_uptime_get());
         k_sem_take(&sem_bc, K_FOREVER);
 
+        printk("\nTask C at time: %lld ms",k_uptime_get());
+
         /*
-         * 1- Read filtered samples from the vector
+         * 1- Read filtered value from the vector
          * 2- Apply PWM signals to output LED
          *
          */
-
-         /*Briefly semaphores test*/
-         
-        // dutyCycle=(int)((output/1023)*100); /* % */
-         printk("\nDuty cycle: %d\n", dutyCycle);
 
          ret = pwm_pin_set_usec(pwm0_dev, BOARDLED_PIN,
 		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*output)/1023), PWM_POLARITY_NORMAL);
