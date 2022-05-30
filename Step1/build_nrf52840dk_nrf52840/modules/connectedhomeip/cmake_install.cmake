@@ -1,4 +1,4 @@
-# Install script for directory: /home/giacomo/ncs/modules/lib/matter/config/nrfconnect/chip-module
+# Install script for directory: /home/mattia/ncs/modules/lib/matter/config/nrfconnect/chip-module
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,6 +34,6 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-objdump")
+  set(CMAKE_OBJDUMP "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-objdump")
 endif()
 

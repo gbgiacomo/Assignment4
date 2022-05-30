@@ -1,9 +1,14 @@
-/*
- * Bego Giacomo, Longo Mattia 2022/05
- * Assignment 4
- * 
- * Implementation of three task by semaphors and shared memory. Only the first one is periodic. 
+/** @file main.c
+ * @brief Contains the the implementation of the Assignment4
  *
+ * The goal of this code is to read an input voltage signal,
+ * filter it and show the result to the output 
+ * by a PWM signal to a LED.
+ * In particular, this file contains the main() function
+ * 
+ * @author Mattia Longo and Giacomo Bego
+ * @date 31 May 2022
+ * @bug No known bugs
  */
 
 
@@ -22,18 +27,7 @@
 
 /* PWM pin initialization */
 #define PWM0_NID DT_NODELABEL(pwm0) 
-//#define BOARDLED_PIN 0x0e
 #define BOARDLED_PIN DT_PROP(PWM0_NID, ch0_pin)
-/* Pin at which LED is connected. Addressing is direct (i.e., pin number)                  */
-                /* Note 1: The PMW channel must be associated with the SAME pin in the DTS file            */
-                /*         See the overlay file in this project to see how to change the assignment        */
-                /*         *** Note: RUN CMAKE (Project -> Run Cmake) after editing the overlay file***    */
-                /* Note 2: the pin can (and should) be obtained automatically from the DTS file.           */
-                /*         I'm doing it manually to avoid entering in (cryptic) DT macros and to force     */ 
-                /*         you to read the dts file.                                                       */
-                /*         This line would do the trick: #define BOARDLED_PIN DT_PROP(PWM0_NID, ch0_pin)   */          
-
-/* Size of stack area used by each thread (can be thread specific, if necessary)*/
 #define STACK_SIZE 1024
 
 /* Thread scheduling priority */
@@ -64,9 +58,9 @@ struct k_sem sem_ab;
 struct k_sem sem_bc;
 
 /* Thread code prototypes */
-void thread_A_code(void *argA, void *argB, void *argC);
-void thread_B_code(void *argA, void *argB, void *argC);
-void thread_C_code(void *argA, void *argB, void *argC);
+void thread_A_code(void *,void *,void *);
+void thread_B_code(void *,void *,void *);
+void thread_C_code(void *,void *,void *);
 
 /*ADC definitions and includes*/
 #include <hal/nrf_saadc.h>
@@ -78,7 +72,9 @@ void thread_C_code(void *argA, void *argB, void *argC);
 #define ADC_CHANNEL_ID 1 
 #define ADC_CHANNEL_INPUT NRF_SAADC_INPUT_AIN1
 #define BUFFER_SIZE 1
-#define SIZE 10 /* Size of the vector in thread B*/
+
+/* Size of the vector in thread B*/
+#define SIZE 10 
 
 /* ADC channel configuration */
 static const struct adc_channel_cfg my_channel_cfg = {
@@ -91,10 +87,19 @@ static const struct adc_channel_cfg my_channel_cfg = {
 struct k_timer my_timer;
 const struct device *adc_dev = NULL;
 static uint16_t adc_sample_buffer[BUFFER_SIZE];
-static uint16_t sample;
-static uint16_t output;
+static uint16_t sample; /**< shared memory between task A and B */
+static uint16_t output; /**< shared memory between task B and C */
 
-/* Takes one sample */
+/**
+ * @brief adc_sample function read the input voltage
+ *
+ * ADC setting and acquisition of the input voltage.
+ * In this case the resolution has been setted to 10 bit (0-1023).
+ * 
+ * \author Mattia Longo and Giacomo Bego
+ * \return integer value, representing the acquired sample
+ */
+
 static int adc_sample(void)
 {
 	int ret;
@@ -118,7 +123,15 @@ static int adc_sample(void)
 	return ret;
 }
 
-/* Main function */
+/**
+ * @brief main function run project
+ *
+ * main function sets the ADC, 
+ * creates the tasks and
+ * initilizes the semaphores.
+ * 
+ */
+
 void main(void) {
     
     int err=0;
@@ -132,7 +145,6 @@ void main(void) {
     if (err) {
         printk("adc_channel_setup() failed with error code %d\n", err);
     }
-
 
     /* Create and init semaphores */
     k_sem_init(&sem_ab, 0, 1);
@@ -151,32 +163,37 @@ void main(void) {
         K_THREAD_STACK_SIZEOF(thread_C_stack), thread_C_code,
         NULL, NULL, NULL, thread_C_prio, 0, K_NO_WAIT);
 
-    
     return;
 } 
 
-/* Thread code implementation */
-void thread_A_code(void *argA , void *argB, void *argC)
+/**
+ * @brief thread_A_code function implement the acquisition task
+ *
+ * Timing variables have been declared and calculated.
+ * This function occurs every 10 ms (periodic task).
+ * If the acquisition by the ADC gets a correct value, 
+ * it pass the sample by a semaphore to task B, otherwise
+ * it set it to a "safety value" equal to zero. 
+ *
+ * \param[*argA, *argB, *argC] void pointer parameters (not used in this project)
+ * \return void function-> it does not return anything
+ * 
+ */
+
+void thread_A_code(void *argA,void *argB,void *argC)
 {
     /* Timing variables to control task periodicity */
     int64_t fin_time=0, release_time=0;
 
-    /* Other variables */
-    long int nact = 0;
-    
     printk("Thread A init (periodic)\n");
 
     /* Compute next release instant */
     release_time = k_uptime_get() + thread_A_period;
 
     /* Thread loop */
-    /* Thread loop */
     while(1) {
 
         printk("\n\nTask A at time: %lld ms" ,k_uptime_get());
-        /*****************************************/
-        /******** Read data input from ADC *******/
-        /*****************************************/
 
         int err=0;
         /* Get one sample, checks for errors and prints the values */
@@ -197,8 +214,7 @@ void thread_A_code(void *argA , void *argB, void *argC)
 
         /*semaphore*/
         k_sem_give(&sem_ab);
-
-
+        
         /* Wait for next release instant */ 
         fin_time = k_uptime_get();
         if( fin_time < release_time) {
@@ -209,11 +225,27 @@ void thread_A_code(void *argA , void *argB, void *argC)
 
 }
 
-void thread_B_code(void *argA , void *argB, void *argC)
+/**
+ * @brief thread_B_code function implement the filtering task
+ *
+ * Every new sample is taken from the shared memory and put into a vector
+ * from which we extract the average value of the last 10 samples.
+ * Then the goal of the task is to copy the starting vector into another 
+ * vector except for the samples "more than 10% far" form the average.
+ * At the end, a new average on the final vector has been done.
+ * The result is saved in another shared memory (global variable)
+ * and passed to the output task by another semaphore.
+ *
+ * \param[*argA, *argB, *argC] void pointer parameters (not used in this project)
+ * \return void function-> it does not return anything
+ * 
+ */
+
+void thread_B_code(void *argA,void *argB,void *argC)
 {
     uint16_t samples[SIZE]={0,0,0,0,0,0,0,0,0,0};
     uint16_t filteredSamples[SIZE]={0,0,0,0,0,0,0,0,0,0};
-    int8_t index=-1; /* From 1 to 10*/
+    int8_t index=-1;
     uint16_t average=0;
     uint16_t upperLevel=0;
     uint16_t lowerLevel=0;
@@ -224,13 +256,6 @@ void thread_B_code(void *argA , void *argB, void *argC)
 
         printk("\nTask B at time: %lld ms",k_uptime_get());
 
-        /*
-         * 1- Read sample value from the semaphore A-B shared memory
-         * 2- Filtering the samples
-         * 3- Provide the right value that drive PWM led
-         *
-         */
-        
          if(index<SIZE-1){
 		index++;
          }
@@ -261,13 +286,13 @@ void thread_B_code(void *argA , void *argB, void *argC)
 		 }
 	 }
          
-
 	 uint16_t sum2=0;
 	
 	 for(uint16_t a=0;a<j;a++){
 	 	sum2+=filteredSamples[a];
 	 }
-          
+         
+         //condition to avoid a zero denominator
          if(j>0){
             output=sum2/j;
          }
@@ -278,11 +303,22 @@ void thread_B_code(void *argA , void *argB, void *argC)
   }
 }
 
-void thread_C_code(void *argA , void *argB, void *argC)
+/**
+ * @brief thread_C_code function shows the result by a LED
+ *
+ * This function gets the filtered result from task B and show
+ * the result so that it is proportional to a PWM duty cicle of a LED.
+ *
+ * \param[*argA, *argB, *argC] void pointer parameters (not used in this project)
+ * \return void function-> it does not return anything 
+ *
+ */
+
+void thread_C_code(void *argA,void *argB,void *argC)
 {
     /* Variables to PWM */
     const struct device *pwm0_dev;          /* Pointer to PWM device structure */
-    unsigned int pwmPeriod_us = 1000;       /* PWM priod in us */
+    unsigned int pwmPeriod_us = 1000;       /* PWM period in us */
     int ret=0;                              /* Generic return value variable */
 
     /* Return pointer to device structure with the given name */
@@ -294,18 +330,11 @@ void thread_C_code(void *argA , void *argB, void *argC)
 
     printk("\nThread C init");
 
-
     while(1) {
 
         k_sem_take(&sem_bc, K_FOREVER);
 
         printk("\nTask C at time: %lld ms",k_uptime_get());
-
-        /*
-         * 1- Read filtered value from the vector
-         * 2- Apply PWM signals to output LED
-         *
-         */
 
          ret = pwm_pin_set_usec(pwm0_dev, BOARDLED_PIN,
 		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*output)/1023), PWM_POLARITY_NORMAL);
@@ -313,7 +342,6 @@ void thread_C_code(void *argA , void *argB, void *argC)
           printk("Error %d: failed to set pulse width\n", ret);
             return;
          }
-
   }
 }
 
