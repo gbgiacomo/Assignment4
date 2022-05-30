@@ -21,18 +21,9 @@
 #include <stdio.h>
 
 /* PWM pin initialization */
-#define PWM0_NID DT_NODELABEL(pwm0) 
-//#define BOARDLED_PIN 0x0e
-#define BOARDLED_PIN DT_PROP(PWM0_NID, ch0_pin)
-/* Pin at which LED is connected. Addressing is direct (i.e., pin number)                  */
-                /* Note 1: The PMW channel must be associated with the SAME pin in the DTS file            */
-                /*         See the overlay file in this project to see how to change the assignment        */
-                /*         *** Note: RUN CMAKE (Project -> Run Cmake) after editing the overlay file***    */
-                /* Note 2: the pin can (and should) be obtained automatically from the DTS file.           */
-                /*         I'm doing it manually to avoid entering in (cryptic) DT macros and to force     */ 
-                /*         you to read the dts file.                                                       */
-                /*         This line would do the trick: #define BOARDLED_PIN DT_PROP(PWM0_NID, ch0_pin)   */          
-
+#define PWM0_NID DT_NODELABEL(pwm0)
+#define BOARDLED_PIN DT_PROP(PWM0_NID, ch0_pin) /* Define output pin */
+          
 /* Size of stack area used by each thread (can be thread specific, if necessary)*/
 #define STACK_SIZE 1024
 
@@ -42,7 +33,7 @@
 #define thread_C_prio 1
 
 /* First therad periodicity (in ms)*/
-#define thread_A_period 10
+#define thread_A_period 15
 
 /* Create thread stack space */
 K_THREAD_STACK_DEFINE(thread_A_stack, STACK_SIZE);
@@ -59,9 +50,15 @@ k_tid_t thread_A_tid;
 k_tid_t thread_B_tid;
 k_tid_t thread_C_tid;
 
-/* Semaphores for task synch */
-struct k_sem sem_ab;
-struct k_sem sem_bc;
+/* Create fifos */
+struct k_fifo fifo_ab;
+struct k_fifo fifo_bc;
+
+/* Create fifo data structure and variables */
+struct data_item_t {
+    void *fifo_reserved;    /* 1st word reserved for use by FIFO */
+    uint16_t data;          /* Actual data */
+};
 
 /* Thread code prototypes */
 void thread_A_code(void *argA, void *argB, void *argC);
@@ -78,7 +75,9 @@ void thread_C_code(void *argA, void *argB, void *argC);
 #define ADC_CHANNEL_ID 1 
 #define ADC_CHANNEL_INPUT NRF_SAADC_INPUT_AIN1
 #define BUFFER_SIZE 1
-#define SIZE 10 /* Size of the vector in thread B*/
+
+/* Size of the vector in thread B */
+#define SIZE 10 
 
 /* ADC channel configuration */
 static const struct adc_channel_cfg my_channel_cfg = {
@@ -91,7 +90,6 @@ static const struct adc_channel_cfg my_channel_cfg = {
 struct k_timer my_timer;
 const struct device *adc_dev = NULL;
 static uint16_t adc_sample_buffer[BUFFER_SIZE];
-static uint16_t sample;
 static uint16_t output;
 
 /* Takes one sample */
@@ -134,9 +132,9 @@ void main(void) {
     }
 
 
-    /* Create and init semaphores */
-    k_sem_init(&sem_ab, 0, 1);
-    k_sem_init(&sem_bc, 0, 1);
+    /* Create/Init fifos */
+    k_fifo_init(&fifo_ab);
+    k_fifo_init(&fifo_bc);
     
     /* Create tasks */
     thread_A_tid = k_thread_create(&thread_A_data, thread_A_stack,
@@ -160,16 +158,14 @@ void thread_A_code(void *argA , void *argB, void *argC)
 {
     /* Timing variables to control task periodicity */
     int64_t fin_time=0, release_time=0;
-
-    /* Other variables */
-    long int nact = 0;
+    
+    struct data_item_t data_ab;
     
     printk("Thread A init (periodic)\n");
 
     /* Compute next release instant */
     release_time = k_uptime_get() + thread_A_period;
 
-    /* Thread loop */
     /* Thread loop */
     while(1) {
 
@@ -186,17 +182,18 @@ void thread_A_code(void *argA , void *argB, void *argC)
         }
         else {
             if(adc_sample_buffer[0] > 1023) {
-                printk("adc reading out of range\n\r");
-                sample=0;  /* Safety value */
+                printk("\t adc reading out of range\r"); 
+                data_ab.data = 0;  /* Safety value */
+        	
             }
             else {
-                sample=adc_sample_buffer[0];
-                printk(": sample is : %4u",sample);
+                data_ab.data=adc_sample_buffer[0];
+                printk("\t sample is : %4u", data_ab.data);
             }
         }
 
-        /*semaphore*/
-        k_sem_give(&sem_ab);
+	/* Put FIFO data */
+        k_fifo_put(&fifo_ab, &data_ab);
 
 
         /* Wait for next release instant */ 
@@ -211,21 +208,24 @@ void thread_A_code(void *argA , void *argB, void *argC)
 
 void thread_B_code(void *argA , void *argB, void *argC)
 {
+    struct data_item_t *data_ab;
+    struct data_item_t data_bc;
+    
     uint16_t samples[SIZE]={0,0,0,0,0,0,0,0,0,0};
     uint16_t filteredSamples[SIZE]={0,0,0,0,0,0,0,0,0,0};
-    int8_t index=-1; /* From 1 to 10*/
+    int8_t index=-1;
     uint16_t average=0;
     uint16_t upperLevel=0;
     uint16_t lowerLevel=0;
 
     while(1) {
 
-        k_sem_take(&sem_ab,  K_FOREVER);
+        data_ab = k_fifo_get(&fifo_ab, K_FOREVER);
 
         printk("\nTask B at time: %lld ms",k_uptime_get());
 
         /*
-         * 1- Read sample value from the semaphore A-B shared memory
+         * 1- Read sample value from FIFO queues
          * 2- Filtering the samples
          * 3- Provide the right value that drive PWM led
          *
@@ -237,8 +237,9 @@ void thread_B_code(void *argA , void *argB, void *argC)
          else{
 		index=0;
 	 }
-
-	 samples[index]=sample;
+          
+         /* Return data from the pointer data_ab */
+	 samples[index]=data_ab->data;
 	
 	 /* Average calculation */
 	 int32_t sum=0;
@@ -261,7 +262,6 @@ void thread_B_code(void *argA , void *argB, void *argC)
 		 }
 	 }
          
-
 	 uint16_t sum2=0;
 	
 	 for(uint16_t a=0;a<j;a++){
@@ -269,17 +269,19 @@ void thread_B_code(void *argA , void *argB, void *argC)
 	 }
           
          if(j>0){
-            output=sum2/j;
+            data_bc.data=sum2/j;
          }
 
-         /*semaphore*/
-         k_sem_give(&sem_bc);
+	 /* Put value in the FIFO quesues */
+         k_fifo_put(&fifo_bc, &data_bc);
 
   }
 }
 
 void thread_C_code(void *argA , void *argB, void *argC)
 {
+    struct data_item_t *data_bc;
+    
     /* Variables to PWM */
     const struct device *pwm0_dev;          /* Pointer to PWM device structure */
     unsigned int pwmPeriod_us = 1000;       /* PWM priod in us */
@@ -294,21 +296,20 @@ void thread_C_code(void *argA , void *argB, void *argC)
 
     printk("\nThread C init");
 
-
     while(1) {
 
-        k_sem_take(&sem_bc, K_FOREVER);
+        data_bc = k_fifo_get(&fifo_bc, K_FOREVER);
 
         printk("\nTask C at time: %lld ms",k_uptime_get());
 
         /*
-         * 1- Read filtered value from the vector
+         * 1- Read filtered value from FIFO queues
          * 2- Apply PWM signals to output LED
          *
          */
 
          ret = pwm_pin_set_usec(pwm0_dev, BOARDLED_PIN,
-		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*output)/1023), PWM_POLARITY_NORMAL);
+		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*(data_bc->data))/1023), PWM_POLARITY_NORMAL);
          if (ret) {
           printk("Error %d: failed to set pulse width\n", ret);
             return;
@@ -316,8 +317,3 @@ void thread_C_code(void *argA , void *argB, void *argC)
 
   }
 }
-
-
-
-
-
