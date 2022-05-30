@@ -966,11 +966,11 @@ Disassembly of section text:
      bce:	bf00      	nop
 
 00000bd0 <thread_B_code>:
-    } 
+ * \return void function-> it does not return anything
+ * 
+ */
 
-}
-
-void thread_B_code(void *argA , void *argB, void *argC)
+void thread_B_code(void *argA,void *argB,void *argC)
 {
      bd0:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
      bd4:	b08d      	sub	sp, #52	; 0x34
@@ -995,7 +995,7 @@ void thread_B_code(void *argA , void *argB, void *argC)
 	 upperLevel=average*1.1;
      bee:	f20f 0bd8 	addw	fp, pc, #216	; 0xd8
      bf2:	e9db ab00 	ldrd	sl, fp, [fp]
-    int8_t index=-1; /* From 1 to 10*/
+    int8_t index=-1;
      bf6:	f04f 36ff 	mov.w	r6, #4294967295	; 0xffffffff
 		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&sem, parm0.split.lo, parm0.split.hi, K_SYSCALL_K_SEM_TAKE);
@@ -1095,7 +1095,6 @@ void thread_B_code(void *argA , void *argB, void *argC)
 		 }
 	 }
          
-
 	 uint16_t sum2=0;
      ca0:	462b      	mov	r3, r5
 	
@@ -1105,7 +1104,8 @@ void thread_B_code(void *argA , void *argB, void *argC)
      ca6:	d808      	bhi.n	cba <thread_B_code+0xea>
 	 	sum2+=filteredSamples[a];
 	 }
-          
+         
+         //condition to avoid a zero denominator
          if(j>0){
      ca8:	b11c      	cbz	r4, cb2 <thread_B_code+0xe2>
             output=sum2/j;
@@ -1282,11 +1282,11 @@ static inline int32_t k_msleep(int32_t ms)
      de8:	00008dda 	.word	0x00008dda
 
 00000dec <thread_C_code>:
+ * \return void function-> it does not return anything 
+ *
+ */
 
-  }
-}
-
-void thread_C_code(void *argA , void *argB, void *argC)
+void thread_C_code(void *argA,void *argB,void *argC)
 {
      dec:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
      df0:	b087      	sub	sp, #28
@@ -1298,7 +1298,7 @@ void thread_C_code(void *argA , void *argB, void *argC)
 	return z_impl_device_get_binding(name);
      df2:	4835      	ldr	r0, [pc, #212]	; (ec8 <thread_C_code+0xdc>)
      df4:	f004 fae4 	bl	53c0 <z_impl_device_get_binding>
-    unsigned int pwmPeriod_us = 1000;       /* PWM priod in us */
+    unsigned int pwmPeriod_us = 1000;       /* PWM period in us */
     int ret=0;                              /* Generic return value variable */
 
     /* Return pointer to device structure with the given name */
@@ -1309,10 +1309,10 @@ void thread_C_code(void *argA , void *argB, void *argC)
 	printk("\nError: Failed to bind to PWM0 r");
      dfc:	4833      	ldr	r0, [pc, #204]	; (ecc <thread_C_code+0xe0>)
      dfe:	f007 f9ba 	bl	8176 <printk>
+         if (ret) {
           printk("Error %d: failed to set pulse width\n", ret);
             return;
          }
-
   }
 }
      e02:	b007      	add	sp, #28

@@ -1,4 +1,4 @@
-# Install script for directory: /home/giacomo/ncs/zephyr/arch/arm/core/aarch32/cortex_m
+# Install script for directory: /home/mattia/ncs/zephyr/arch/arm/core/aarch32/cortex_m
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,6 +34,6 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/giacomo/gnuarmemb/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-objdump")
+  set(CMAKE_OBJDUMP "/home/mattia/gnuarmemb/9-2019-q4-major/bin/arm-none-eabi-objdump")
 endif()
 
