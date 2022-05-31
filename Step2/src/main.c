@@ -1,9 +1,14 @@
-/*
- * Bego Giacomo, Longo Mattia 2022/05
- * Assignment 4
- * 
- * Implementation of three task by semaphors and shared memory. Only the first one is periodic. 
+/** @file main.c
+ * @brief Contains the the implementation of the Assignment4
  *
+ * The goal of this code is to read an input voltage signal,
+ * filter it and show the result to the output 
+ * by a PWM signal to a LED.
+ * In particular, this file contains the main() function
+ * 
+ * @author Mattia Longo and Giacomo Bego
+ * @date 31 May 2022
+ * @bug No known bugs
  */
 
 
@@ -90,9 +95,17 @@ static const struct adc_channel_cfg my_channel_cfg = {
 struct k_timer my_timer;
 const struct device *adc_dev = NULL;
 static uint16_t adc_sample_buffer[BUFFER_SIZE];
-static uint16_t output;
 
-/* Takes one sample */
+/**
+ * @brief adc_sample function read the input voltage
+ *
+ * ADC setting and acquisition of the input voltage.
+ * In this case the resolution has been setted to 10 bit (0-1023).
+ * 
+ * \author Mattia Longo and Giacomo Bego
+ * \return integer value, representing the acquired sample
+ */
+
 static int adc_sample(void)
 {
 	int ret;
@@ -116,7 +129,15 @@ static int adc_sample(void)
 	return ret;
 }
 
-/* Main function */
+/**
+ * @brief main function run project
+ *
+ * main function sets the ADC, 
+ * creates the tasks and
+ * initilizes the FIFO queues.
+ * 
+ */
+
 void main(void) {
     
     int err=0;
@@ -151,9 +172,22 @@ void main(void) {
 
     
     return;
-} 
+}
 
-/* Thread code implementation */
+/**
+ * @brief thread_A_code function implement the acquisition task
+ *
+ * Timing variables have been declared and calculated.
+ * This function occurs every 15 ms (periodic task).
+ * If the acquisition by the ADC gets a correct value, 
+ * it pass the sample by a FIFO queue to task B, otherwise
+ * it set it to a "safety value" equal to zero. 
+ *
+ * \param[*argA, *argB, *argC] void pointer parameters (not used in this project)
+ * \return void function-> it does not return anything
+ * 
+ */
+
 void thread_A_code(void *argA , void *argB, void *argC)
 {
     /* Timing variables to control task periodicity */
@@ -170,9 +204,6 @@ void thread_A_code(void *argA , void *argB, void *argC)
     while(1) {
 
         printk("\n\nTask A at time: %lld ms" ,k_uptime_get());
-        /*****************************************/
-        /******** Read data input from ADC *******/
-        /*****************************************/
 
         int err=0;
         /* Get one sample, checks for errors and prints the values */
@@ -188,7 +219,7 @@ void thread_A_code(void *argA , void *argB, void *argC)
             }
             else {
                 data_ab.data=adc_sample_buffer[0];
-                printk("\t sample is : %4u", data_ab.data);
+                printk("\t Sample is : %4u", data_ab.data);
             }
         }
 
@@ -205,6 +236,22 @@ void thread_A_code(void *argA , void *argB, void *argC)
     } 
 
 }
+
+/**
+ * @brief thread_B_code function implement the filtering task
+ *
+ * Every new sample is taken from the FIFO queue and put into a vector
+ * from which we extract the average value of the last 10 samples.
+ * Then the goal of the task is to copy the starting vector into another 
+ * vector except for the samples "more than 10% far" form the average.
+ * At the end, a new average on the final vector has been done.
+ * The result is saved in another FIFO queue and passed
+ * to the output task.
+ *
+ * \param[*argA, *argB, *argC] void pointer parameters (not used in this project)
+ * \return void function-> it does not return anything
+ * 
+ */
 
 void thread_B_code(void *argA , void *argB, void *argC)
 {
@@ -223,13 +270,6 @@ void thread_B_code(void *argA , void *argB, void *argC)
         data_ab = k_fifo_get(&fifo_ab, K_FOREVER);
 
         printk("\nTask B at time: %lld ms",k_uptime_get());
-
-        /*
-         * 1- Read sample value from FIFO queues
-         * 2- Filtering the samples
-         * 3- Provide the right value that drive PWM led
-         *
-         */
         
          if(index<SIZE-1){
 		index++;
@@ -237,8 +277,7 @@ void thread_B_code(void *argA , void *argB, void *argC)
          else{
 		index=0;
 	 }
-          
-         /* Return data from the pointer data_ab */
+         
 	 samples[index]=data_ab->data;
 	
 	 /* Average calculation */
@@ -272,11 +311,24 @@ void thread_B_code(void *argA , void *argB, void *argC)
             data_bc.data=sum2/j;
          }
 
+         printk("\t Average is : %4u", data_bc.data);
+
 	 /* Put value in the FIFO quesues */
          k_fifo_put(&fifo_bc, &data_bc);
 
   }
 }
+
+/**
+ * @brief thread_C_code function shows the result by a LED
+ *
+ * This function gets the filtered result from task B and show
+ * the result so that it is proportional to a PWM duty cicle of a LED.
+ *
+ * \param[*argA, *argB, *argC] void pointer parameters (not used in this project)
+ * \return void function-> it does not return anything 
+ *
+ */
 
 void thread_C_code(void *argA , void *argB, void *argC)
 {
@@ -302,18 +354,12 @@ void thread_C_code(void *argA , void *argB, void *argC)
 
         printk("\nTask C at time: %lld ms",k_uptime_get());
 
-        /*
-         * 1- Read filtered value from FIFO queues
-         * 2- Apply PWM signals to output LED
-         *
-         */
-
-         ret = pwm_pin_set_usec(pwm0_dev, BOARDLED_PIN,
+        ret = pwm_pin_set_usec(pwm0_dev, BOARDLED_PIN,
 		      pwmPeriod_us,(unsigned int)((pwmPeriod_us*(data_bc->data))/1023), PWM_POLARITY_NORMAL);
-         if (ret) {
+        if (ret) {
           printk("Error %d: failed to set pulse width\n", ret);
-            return;
-         }
+           return;
+        }
 
   }
 }
